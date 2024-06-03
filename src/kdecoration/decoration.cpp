@@ -20,13 +20,15 @@ Decoration::Decoration(QObject *parent, const QVariantList &args)
 {
 }
 
-void Decoration::init()
+bool Decoration::init()
 {
     m_kdeglobalsWatcher = KConfigWatcher::create(KSharedConfig::openConfig("kdeglobals"));
 
     setBorderSizes();
     connectEvents();
     updateColors();
+
+    return true;
 }
 
 void Decoration::paint(QPainter *painter, const QRect &repaintRegion)
@@ -40,7 +42,7 @@ void Decoration::paint(QPainter *painter, const QRect &repaintRegion)
 
 void Decoration::paintBorders(QPainter &p)
 {
-    auto client = this->client().lock();
+    auto client = this->client();
     auto windowRect = rect();
 
     p.save();
@@ -66,7 +68,7 @@ void Decoration::updateColors()
 
 void Decoration::setBorderSizes()
 {
-    const auto client = this->client().lock();
+    const auto client = this->client();
 
     const int left = (settings()->borderSize() == KDecoration2::BorderSize::NoSides) ? 0 : borderSize();
     const int top = borderSize();
@@ -78,8 +80,8 @@ void Decoration::setBorderSizes()
 
 void Decoration::connectEvents()
 {
-    auto clientPtr = this->client().lock().data();
-    auto settingsPtr = settings().data();
+    auto clientPtr = this->client();
+    auto settingsPtr = settings().get();
 
     // No idea why regular connection does not work
     connect(clientPtr, &KDecoration2::DecoratedClient::activeChanged, this, [this](bool value) {

@@ -12,7 +12,7 @@ target_sources(bismuth_kdecoration PRIVATE decoration.cpp decoration.hpp)
 target_link_libraries(
   bismuth_kdecoration
   PUBLIC Qt::Core
-  PRIVATE KDecoration2::KDecoration KF5::ConfigCore KF5::ConfigWidgets)
+  PRIVATE KDecoration2::KDecoration KF6::ConfigCore KF6::ConfigWidgets KF6::CoreAddons)
 
 install(TARGETS bismuth_kdecoration
         DESTINATION ${KDE_INSTALL_PLUGINDIR}/org.kde.kdecoration2)

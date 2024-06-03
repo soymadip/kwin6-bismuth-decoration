@@ -29,7 +29,7 @@ public Q_SLOTS:
      *
      * All initialization must be performed in this method instead of the constructor.
      */
-    void init() override;
+    bool init() override;
 
 private:
     void paintBorders(QPainter &painter);
