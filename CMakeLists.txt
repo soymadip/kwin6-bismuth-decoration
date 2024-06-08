@@ -22,7 +22,7 @@ option(
   ON)
 
 set(QT_MIN_VERSION "6.5.0")
-set(KF6_MIN_VERSION "6.3.0")
+set(KF6_MIN_VERSION "6.0.0")
 
 # HACK: Use git to get the recent version We could explicitly set the version
 # via project declaration But this would conflict with package.json and would
