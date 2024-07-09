@@ -32,12 +32,8 @@ plus a regular C++ build environment -- cmake, gcc (or clang) and such.
 This should be sufficient to compile and install the theme:
 
 ```
-git clone https://github.com/ivan-cukic/kwin6-bismuth-decoration
-cd kwin6-bismuth-decoration
-mkdir build
-cd build
-cmake .. -DCMAKE_INSTALL_PREFIX=/usr
-make && make install
+git clone https://github.com/ivan-cukic/kwin6-bismuth-decoration && cd kwin6-bismuth-decoration
+bash install.sh
 ```
 
 If you installed KDE Frameworks and Plasma into a different prefix,
